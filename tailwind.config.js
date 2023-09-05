@@ -6,7 +6,11 @@ export default {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'bg-desktop': "url('./src/assets/images/bg-sidebar-desktop.svg')",
+      },
+    },
   },
   plugins: [],
 };

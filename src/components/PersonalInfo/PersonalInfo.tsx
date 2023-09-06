@@ -2,9 +2,11 @@ import {Field, Form, Formik} from 'formik';
 
 function PersonalInfo() {
   return (
-    <div>
-      <p>Personal info</p>
-      <p>Please provide your name, email, address, phone number.</p>
+    <div className="grow px-20 py-5">
+      <p className="main-title">Personal info</p>
+      <p className="text-Cool-Gray">
+        Please provide your name, email, address, phone number.
+      </p>
       <Formik
         initialValues={{name: '', email: '', password: ''}}
         onSubmit={(values, {setSubmitting}) => {
@@ -14,41 +16,54 @@ function PersonalInfo() {
           }, 400);
         }}>
         {({values, handleBlur, handleChange, handleSubmit, isSubmitting}) => (
-          <Form onSubmit={handleSubmit}>
-            <label>
+          <Form onSubmit={handleSubmit} className="flex flex-col gap-1 mt-5">
+            <label htmlFor="name" className="text-Marine-Blue">
               Name
-              <Field
-                type="text"
-                name="name"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.name}
-                placeholder="e.g. Stephen King"
-              />
             </label>
-            <label>
+            <Field
+              type="text"
+              name="name"
+              id="name"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
+              placeholder="e.g. Stephen King"
+              required
+              className="main-input mb-1"
+            />
+
+            <label htmlFor="email" className="text-Marine-Blue">
               Email Address
-              <Field
-                type="email"
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                placeholder="e.g. stephenking@lorem.com"
-              />
             </label>
-            <label>
+            <Field
+              type="email"
+              name="email"
+              id="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              placeholder="e.g. stephenking@lorem.com"
+              required
+              className="main-input mb-1"
+            />
+            <label htmlFor="password" className="text-Marine-Blue">
               Phone Number
-              <Field
-                type="password"
-                name="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-                placeholder="e.g. +1 234 567 890"
-              />
             </label>
-            <button type="submit" disabled={isSubmitting}>
+            <Field
+              type="password"
+              name="password"
+              id="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              placeholder="e.g. +1 234 567 890"
+              required
+              className="main-input"
+            />
+            <button
+              type="submit"
+              className="bg-Marine-Blue self-end justify-self-end"
+              disabled={isSubmitting}>
               Next Step
             </button>
           </Form>

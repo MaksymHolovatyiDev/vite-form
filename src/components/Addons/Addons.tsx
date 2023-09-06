@@ -1,40 +1,50 @@
-import {Field, Form, Formik} from 'formik';
+import {addonsPick} from '@/constants/constants';
+import {Form, Formik} from 'formik';
+import AddonsListItem from '../AddonsListItem/AddonsListItem';
 
 function Addons() {
   return (
-    <>
-      <p>Pick add-ons</p>
-      <p>Add-ons help enhance your gaming experience.</p>
+    <div className="base-container">
+      <p className="main-title">Pick add-ons</p>
+      <p className="text-Cool-Gray">
+        Add-ons help enhance your gaming experience.
+      </p>
       <Formik
-        initialValues={{
-          onlineService: false,
-          largerStorage: false,
-          customizableProfile: false,
-        }}
+        initialValues={addonsPick.reduce(
+          (acc, el) => ({...acc, [el.text.split(' ').join('')]: false}),
+          {},
+        )}
         onSubmit={async values => {
           await new Promise(r => setTimeout(r, 500));
           alert(JSON.stringify(values, null, 2));
         }}>
         {() => (
-          <Form>
-            <div id="my-radio-group">Picked</div>
-            <div role="group" aria-labelledby="my-radio-group">
-              <label>
-                <Field type="checkbox" name="onlineService" />
-              </label>
-              <label>
-                <Field type="checkbox" name="largerStorage" />
-              </label>
-              <label>
-                <Field type="checkbox" name="customizableProfile" />
-              </label>
+          <Form className="flex flex-col justify-between grow mt-8">
+            <ul
+              role="group"
+              id="my-radio-group"
+              aria-labelledby="my-radio-group"
+              className="flex flex-col gap-4">
+              {addonsPick.map(el => (
+                <li key={el.text}>
+                  <label>
+                    <AddonsListItem data={el} />
+                  </label>
+                </li>
+              ))}
+            </ul>
+            <div className="flex justify-between">
+              <button type="button" className="text-Cool-Gray">
+                Back
+              </button>
+              <button type="submit" className="bg-Marine-Blue self-end">
+                Next Step
+              </button>
             </div>
-            <button type="button">Back</button>
-            <button type="submit">Submit</button>
           </Form>
         )}
       </Formik>
-    </>
+    </div>
   );
 }
 

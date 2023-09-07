@@ -4,87 +4,83 @@ import SelectCardItem from '../SelectCardItem/SelectCardItem';
 
 function SelectPlan() {
   return (
-    <div className="base-container">
-      <p className="main-title mb-2">Select your plan</p>
-      <p className="text-Cool-Gray mb-8">
-        You have the option of monthly or yearly billing.
-      </p>
-      <Formik
-        initialValues={{
-          plan: cards[0].split('bg-')[1],
-          billing: false,
-        }}
-        onSubmit={async values => {
-          await new Promise(r => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
-        }}>
-        {({values}) => (
-          <Form className="flex flex-col justify-between grow">
-            <div
-              id="my-radio-group"
-              role="group"
-              aria-labelledby="my-radio-group">
-              <ul className="flex justify-between">
-                {cards.map((el, idx) => (
-                  <li key={el}>
-                    <label>
-                      <Field
-                        type="radio"
-                        name="plan"
-                        value={el.split('bg-')[1]}
-                        className="hidden"
-                      />
-                      <SelectCardItem
-                        card={el}
-                        price={
-                          values.billing
-                            ? billing.year[idx]
-                            : billing.month[idx]
-                        }
-                        selected={values.plan === el.split('bg-')[1]}
-                        billing={values.billing}
-                      />
-                    </label>
-                  </li>
-                ))}
-              </ul>
-              <div className="flex justify-around items-center px-32 mt-12 bg-Magnolia rounded h-12">
-                <p
-                  className={`card-title text-base transition ${
-                    values.billing ? 'text-Cool-Gray' : 'text-Marine-Blue'
-                  }`}>
-                  Monthly
-                </p>
-                <label>
-                  <div className="bg-Marine-Blue px-1 h-6 w-12 rounded-full flex justify-start items-center cursor-pointer">
-                    <div
-                      className={`bg-white h-5 w-5 rounded-full transition-transform ${
-                        values.billing && 'translate-x-full'
-                      }`}
+    <Formik
+      initialValues={{
+        plan: cards[0].split('bg-')[1],
+        billing: false,
+      }}
+      onSubmit={async values => {
+        await new Promise(r => setTimeout(r, 500));
+        alert(JSON.stringify(values, null, 2));
+      }}>
+      {({values}) => (
+        <Form className="flex flex-col justify-between grow">
+          <div
+            id="my-radio-group"
+            role="group"
+            aria-labelledby="my-radio-group">
+            <ul className="flex justify-between">
+              {cards.map((el, idx) => (
+                <li key={el}>
+                  <label>
+                    <Field
+                      type="radio"
+                      name="plan"
+                      value={el.split('bg-')[1]}
+                      className="hidden"
                     />
-                  </div>
-                  <Field type="checkbox" name="billing" className="hidden" />
-                </label>
-                <p
-                  className={`card-title text-base transition ${
-                    values.billing ? 'text-Marine-Blue' : 'text-Cool-Gray'
-                  }`}>
-                  Yearly
-                </p>
-              </div>
+                    <SelectCardItem
+                      card={el}
+                      price={
+                        values.billing ? billing.year[idx] : billing.month[idx]
+                      }
+                      selected={values.plan === el.split('bg-')[1]}
+                      billing={values.billing}
+                    />
+                  </label>
+                </li>
+              ))}
+            </ul>
+            <div className="flex justify-around items-center px-32 mt-12 bg-Magnolia rounded h-12">
+              <p
+                className={`card-title text-base transition ${
+                  values.billing ? 'text-Cool-Gray' : 'text-Marine-Blue'
+                }`}>
+                Monthly
+              </p>
+              <label>
+                <div className="bg-Marine-Blue px-1 h-6 w-12 rounded-full flex justify-start items-center cursor-pointer">
+                  <div
+                    className={`bg-white h-5 w-5 rounded-full transition-transform ${
+                      values.billing && 'translate-x-full'
+                    }`}
+                  />
+                </div>
+                <Field type="checkbox" name="billing" className="hidden" />
+              </label>
+              <p
+                className={`card-title text-base transition ${
+                  values.billing ? 'text-Marine-Blue' : 'text-Cool-Gray'
+                }`}>
+                Yearly
+              </p>
             </div>
-            <div className="flex justify-between">
-              <button type="button" className="text-Cool-Gray">
-                Go Back
-              </button>
-              <button type="submit" className="bg-Marine-Blue self-end">
-                Next Step
-              </button>
-            </div>
-          </Form>
-        )}
-      </Formik>
-    </div>
+          </div>
+          <div className="flex justify-between">
+            <button
+              type="button"
+              className="text-Cool-Gray transition border-none hover:text-Marine-Blue">
+              Go Back
+            </button>
+            <button
+              type="submit"
+              className="bg-Marine-Blue self-end border-none transition-opacity hover:opacity-90">
+              Next Step
+            </button>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 }
 

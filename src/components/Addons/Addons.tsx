@@ -4,11 +4,6 @@ import AddonsListItem from '../AddonsListItem/AddonsListItem';
 
 function Addons() {
   return (
-    <div className="base-container">
-      <p className="main-title">Pick add-ons</p>
-      <p className="text-Cool-Gray">
-        Add-ons help enhance your gaming experience.
-      </p>
       <Formik
         initialValues={addonsPick.reduce(
           (acc, el) => ({...acc, [el.text.split(' ').join('')]: false}),
@@ -44,7 +39,6 @@ function Addons() {
           </Form>
         )}
       </Formik>
-    </div>
   );
 }
 

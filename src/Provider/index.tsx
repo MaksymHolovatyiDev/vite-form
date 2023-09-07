@@ -1,14 +1,32 @@
 import {ContextValue} from '@/Types';
+import {cards} from '@/constants/constants';
 import {createContext, useContext, ReactNode, useReducer} from 'react';
 
 const initialState = {
   info: {},
-  plan: {},
+  plan: {
+    plan: cards[0].text.split('bg-')[1],
+  },
   addons: {},
+  summary: {price: 0},
 };
 
-const reducer = (state: any, action: any) => ({...state, [action.type]: {...action.payload}});
-
+const reducer = (state: any, action: any) => {
+  switch (action.type) {
+    case 'setPrice':
+      return {
+        ...state,
+        summary: {
+          price: action.payload,
+        },
+      };
+    default:
+      return {
+        ...state,
+        [action.type]: {...action.payload},
+      };
+  }
+};
 
 const DataContext = createContext<ContextValue>({} as ContextValue);
 

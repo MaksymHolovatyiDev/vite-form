@@ -1,11 +1,10 @@
 import {MainRoutes} from '@/environment/variables';
 
-export const cards = ['bg-Arcade', 'bg-Advanced', 'bg-Pro'];
-
-export const billing = {
-  year: [90, 120, 150],
-  month: [9, 12, 15],
-};
+export const cards = [
+  {text: 'bg-Arcade', price: {year: 90, month: 9}},
+  {text: 'bg-Advanced', price: {year: 120, month: 12}},
+  {text: 'bg-Pro', price: {year: 150, month: 15}},
+];
 
 export const getData = (route: string) => {
   switch (route) {

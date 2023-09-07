@@ -2,8 +2,8 @@ import {addonsPickInterface} from '@/Types';
 import {Field} from 'formik';
 import {useState} from 'react';
 
-function AddonsListItem({data, billing}: addonsPickInterface) {
-  const [checked, setChecked] = useState(false);
+function AddonsListItem({data, billing, value}: addonsPickInterface) {
+  const [checked, setChecked] = useState(value);
 
   const onHandleChange = (el: any) => {
     setChecked(el.target.checked);

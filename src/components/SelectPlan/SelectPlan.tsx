@@ -1,4 +1,4 @@
-import {billing, cards} from '@/constants/constants';
+import {cards} from '@/constants/constants';
 import {Field, Form, Formik} from 'formik';
 import PlanCardItem from '@components/PlanCardItem/PlanCardItem';
 import {Link, useNavigate} from 'react-router-dom';
@@ -14,7 +14,7 @@ function SelectPlan() {
       initialValues={
         Object.keys(state.plan).length === 0
           ? {
-              plan: cards[0].split('bg-')[1],
+              plan: cards[0].text.split('bg-')[1],
               billing: false,
             }
           : state.plan
@@ -31,21 +31,18 @@ function SelectPlan() {
             role="group"
             aria-labelledby="my-radio-group">
             <ul className="flex justify-between">
-              {cards.map((el, idx) => (
-                <li key={el}>
+              {cards.map(el => (
+                <li key={el.text}>
                   <label>
                     <Field
                       type="radio"
                       name="plan"
-                      value={el.split('bg-')[1]}
+                      value={el.text.split('bg-')[1]}
                       className="hidden"
                     />
                     <PlanCardItem
                       card={el}
-                      price={
-                        values.billing ? billing.year[idx] : billing.month[idx]
-                      }
-                      selected={values.plan === el.split('bg-')[1]}
+                      selected={values.plan === el.text.split('bg-')[1]}
                       billing={values.billing}
                     />
                   </label>

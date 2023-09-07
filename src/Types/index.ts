@@ -1,6 +1,5 @@
 export interface SelectedCardItemType {
-  card: string;
-  price: number;
+  card: {text: string; price: {year: number; month: number}};
   selected: boolean;
   billing: boolean;
 }
@@ -15,10 +14,11 @@ export interface addonsPickInterface {
     description: string;
   };
   billing: boolean | undefined;
+  value: boolean;
 }
 
 export interface ContextValue {
-  state: {info: any; plan: any; addons: any};
+  state: {info: any; plan: any; addons: any; summary: {price: number}};
   dispatch: (data: {type: string; payload: any}) => void;
 }
 
@@ -26,4 +26,13 @@ export interface InfoValues {
   name: string;
   email: string;
   tel: string;
+}
+
+export interface FinishAddonsItemsType {
+  data: string;
+  setTotalPrice: (callback: (price: number) => number) => void;
+}
+
+export interface FinishType {
+  setThank: (data: boolean) => void;
 }

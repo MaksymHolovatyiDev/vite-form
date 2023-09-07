@@ -5,6 +5,7 @@ import {Routes, Route} from 'react-router-dom';
 import {MainRoutes} from '@/environment/variables';
 import DataProvider from '@/Provider';
 import Addons from '@/Pages/Addons';
+import Summary from '@/Pages/Summary';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path={MainRoutes.default} element={<Info />} />
         <Route path={MainRoutes.plan} element={<Plan />} />
         <Route path={MainRoutes.addons} element={<Addons />} />
+        <Route path={MainRoutes.summary} element={<Summary />} />f
         <Route path="*" element={<Info />} />
       </Routes>
     </DataProvider>

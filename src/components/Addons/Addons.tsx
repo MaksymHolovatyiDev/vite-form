@@ -17,7 +17,7 @@ function Addons() {
         navigate(MainRoutes.summary);
         setSubmitting(false);
       }}>
-      {({isSubmitting}) => (
+      {({values, isSubmitting}) => (
         <Form className="flex flex-col justify-between grow mt-8">
           <ul
             role="group"
@@ -27,7 +27,11 @@ function Addons() {
             {addonsPick.map(el => (
               <li key={el.text}>
                 <label>
-                  <AddonsListItem data={el} billing={state.plan?.billing} />
+                  <AddonsListItem
+                    data={el}
+                    billing={state.plan?.billing}
+                    value={values[el.text]}
+                  />
                 </label>
               </li>
             ))}
@@ -36,7 +40,7 @@ function Addons() {
             <Link
               to={MainRoutes.plan}
               className="text-Cool-Gray transition border-none hover:text-Marine-Blue">
-              Back
+              Go Back
             </Link>
             <button
               disabled={isSubmitting}

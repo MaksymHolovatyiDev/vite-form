@@ -10,7 +10,7 @@ function SelectCardItem({
     <div
       className={`${
         selected && 'border-Purplish-Blue bg-Magnolia'
-      } border-2 rounded-md p-4 w-40 cursor-pointer`}>
+      } border-2 rounded-md p-4 w-40 cursor-pointer hover:border-Purplish-Blue`}>
       <div
         className={`${card} bg-no-repeat bg-contain bg-center h-12 w-12 mb-8`}
       />

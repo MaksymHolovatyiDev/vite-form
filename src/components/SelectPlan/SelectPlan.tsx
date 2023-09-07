@@ -1,19 +1,30 @@
 import {billing, cards} from '@/constants/constants';
 import {Field, Form, Formik} from 'formik';
 import SelectCardItem from '../SelectCardItem/SelectCardItem';
+import {useNavigate} from 'react-router-dom';
+import {useData} from '@/Provider';
+import {MainRoutes} from '@/environment/variables';
 
 function SelectPlan() {
+  const navigate = useNavigate();
+  const {state, dispatch} = useData();
+
   return (
     <Formik
-      initialValues={{
-        plan: cards[0].split('bg-')[1],
-        billing: false,
-      }}
-      onSubmit={async values => {
-        await new Promise(r => setTimeout(r, 500));
-        alert(JSON.stringify(values, null, 2));
+      initialValues={
+        Object.keys(state.plan).length === 0
+          ? {
+              plan: cards[0].split('bg-')[1],
+              billing: false,
+            }
+          : state.plan
+      }
+      onSubmit={async (values, {setSubmitting}) => {
+        dispatch({type: 'plan', payload: values});
+        navigate(MainRoutes.addons);
+        setSubmitting(false);
       }}>
-      {({values}) => (
+      {({values, isSubmitting}) => (
         <Form className="flex flex-col justify-between grow">
           <div
             id="my-radio-group"
@@ -73,6 +84,7 @@ function SelectPlan() {
               Go Back
             </button>
             <button
+              disabled={isSubmitting}
               type="submit"
               className="bg-Marine-Blue self-end border-none transition-opacity hover:opacity-90">
               Next Step

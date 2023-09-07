@@ -7,13 +7,8 @@ const initialState = {
   addons: {},
 };
 
-const reducer = (state: any, action: any) => {
-  switch (action.type) {
-    case 'Info':
-      return {...state, info:{...action.payload}};
-  }
-  return state;
-};
+const reducer = (state: any, action: any) => ({...state, [action.type]: {...action.payload}});
+
 
 const DataContext = createContext<ContextValue>({} as ContextValue);
 

@@ -25,7 +25,7 @@ function PersonalInfo() {
           ? {name: '', email: '', tel: ''}
           : state.info
       }
-      onSubmit={(values, {setSubmitting}) => {
+      onSubmit={async (values, {setSubmitting}) => {
         let error = false;
         setRequired([]);
         for (const [key, value] of Object.entries(values)) {
@@ -37,7 +37,7 @@ function PersonalInfo() {
         }
 
         if (!error) {
-          dispatch({type: 'Info', payload: values});
+          dispatch({type: 'info', payload: values});
           navigate(MainRoutes.plan);
         }
 

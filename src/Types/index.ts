@@ -14,6 +14,7 @@ export interface addonsPickInterface {
     };
     description: string;
   };
+  billing: boolean | undefined;
 }
 
 export interface ContextValue {

@@ -1,7 +1,7 @@
 import {billing, cards} from '@/constants/constants';
 import {Field, Form, Formik} from 'formik';
-import SelectCardItem from '../SelectCardItem/SelectCardItem';
-import {useNavigate} from 'react-router-dom';
+import PlanCardItem from '@components/PlanCardItem/PlanCardItem';
+import {Link, useNavigate} from 'react-router-dom';
 import {useData} from '@/Provider';
 import {MainRoutes} from '@/environment/variables';
 
@@ -40,7 +40,7 @@ function SelectPlan() {
                       value={el.split('bg-')[1]}
                       className="hidden"
                     />
-                    <SelectCardItem
+                    <PlanCardItem
                       card={el}
                       price={
                         values.billing ? billing.year[idx] : billing.month[idx]
@@ -78,11 +78,11 @@ function SelectPlan() {
             </div>
           </div>
           <div className="flex justify-between">
-            <button
-              type="button"
+            <Link
+              to={MainRoutes.default}
               className="text-Cool-Gray transition border-none hover:text-Marine-Blue">
               Go Back
-            </button>
+            </Link>
             <button
               disabled={isSubmitting}
               type="submit"

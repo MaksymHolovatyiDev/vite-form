@@ -41,7 +41,7 @@ export const addonsPick = [
     text: 'Online service',
     description: 'Access to multiply games',
     price: {
-      year: 12,
+      year: 10,
       month: 1,
     },
   },
@@ -49,16 +49,16 @@ export const addonsPick = [
     text: 'Larger storage',
     description: 'Extra 1 TB of cloud save',
     price: {
-      year: 12,
-      month: 1,
+      year: 20,
+      month: 2,
     },
   },
   {
     text: 'Customizable profile',
     description: 'Custom theme on your profile',
     price: {
-      year: 12,
-      month: 1,
+      year: 20,
+      month: 2,
     },
   },
 ];

@@ -30,7 +30,7 @@ function SelectPlan() {
             id="my-radio-group"
             role="group"
             aria-labelledby="my-radio-group">
-            <ul className="flex justify-between">
+            <ul className="flex justify-between mobile:flex-col mobile:gap-4">
               {cards.map(el => (
                 <li key={el.text}>
                   <label>
@@ -49,41 +49,43 @@ function SelectPlan() {
                 </li>
               ))}
             </ul>
-            <div className="flex justify-around items-center px-32 mt-12 bg-Magnolia rounded h-12">
-              <p
-                className={`card-title text-base transition ${
-                  values.billing ? 'text-Cool-Gray' : 'text-Marine-Blue'
-                }`}>
-                Monthly
-              </p>
-              <label>
-                <div className="bg-Marine-Blue px-1 h-6 w-12 rounded-full flex justify-start items-center cursor-pointer">
-                  <div
-                    className={`bg-white h-5 w-5 rounded-full transition-transform ${
-                      values.billing && 'translate-x-full'
-                    }`}
-                  />
-                </div>
-                <Field type="checkbox" name="billing" className="hidden" />
-              </label>
-              <p
-                className={`card-title text-base transition ${
-                  values.billing ? 'text-Marine-Blue' : 'text-Cool-Gray'
-                }`}>
-                Yearly
-              </p>
+            <div className="flex justify-center items-center mt-12 bg-Magnolia rounded h-12">
+              <div className="flex items-center gap-4">
+                <p
+                  className={`card-title text-base transition ${
+                    values.billing ? 'text-Cool-Gray' : 'text-Marine-Blue'
+                  }`}>
+                  Monthly
+                </p>
+                <label>
+                  <div className="bg-Marine-Blue px-1 h-6 w-12 rounded-full flex justify-start items-center cursor-pointer">
+                    <div
+                      className={`bg-white h-5 w-5 rounded-full transition-transform ${
+                        values.billing && 'translate-x-full'
+                      }`}
+                    />
+                  </div>
+                  <Field type="checkbox" name="billing" className="hidden" />
+                </label>
+                <p
+                  className={`card-title text-base transition ${
+                    values.billing ? 'text-Marine-Blue' : 'text-Cool-Gray'
+                  }`}>
+                  Yearly
+                </p>
+              </div>
             </div>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between mobile:fixed mobile:flex mobile:items-center mobile:w-full mobile:bg-white mobile:right-0 mobile:bottom-0 mobile:p-4">
             <Link
               to={MainRoutes.default}
-              className="text-Cool-Gray transition border-none hover:text-Marine-Blue">
+              className="text-Cool-Gray transition border-none hover:text-Marine-Blue flex items-center">
               Go Back
             </Link>
             <button
               disabled={isSubmitting}
               type="submit"
-              className="bg-Marine-Blue self-end border-none transition-opacity hover:opacity-90">
+              className="bg-Marine-Blue self-end border-none transition-opacity hover:opacity-90 mobile:rounded">
               Next Step
             </button>
           </div>

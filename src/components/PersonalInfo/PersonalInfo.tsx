@@ -122,12 +122,14 @@ function PersonalInfo() {
               }`}
             />
           </div>
-          <button
-            type="submit"
-            className="bg-Marine-Blue self-end border-none transition-opacity hover:opacity-90"
-            disabled={isSubmitting}>
-            Next Step
-          </button>
+          <div className="self-end mobile:fixed mobile:flex mobile:items-center mobile:justify-end mobile:w-full mobile:bg-white mobile:right-0 mobile:bottom-0 mobile:p-4">
+            <button
+              type="submit"
+              className="bg-Marine-Blue border-none transition-opacity hover:opacity-90 mobile:rounded"
+              disabled={isSubmitting}>
+              Next Step
+            </button>
+          </div>
         </Form>
       )}
     </Formik>

@@ -36,16 +36,16 @@ function Addons() {
               </li>
             ))}
           </ul>
-          <div className="flex justify-between">
+          <div className="flex justify-between mobile:fixed mobile:flex mobile:items-center mobile:w-full mobile:bg-white mobile:right-0 mobile:bottom-0 mobile:p-4">
             <Link
               to={MainRoutes.plan}
-              className="text-Cool-Gray transition border-none hover:text-Marine-Blue">
+              className="text-Cool-Gray transition border-none hover:text-Marine-Blue flex items-center">
               Go Back
             </Link>
             <button
               disabled={isSubmitting}
               type="submit"
-              className="bg-Marine-Blue self-end border-none transition-opacity hover:opacity-90">
+              className="bg-Marine-Blue self-end border-none transition-opacity hover:opacity-90 mobile:rounded">
               Next Step
             </button>
           </div>

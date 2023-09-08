@@ -26,6 +26,11 @@ export const getData = (route: string) => {
         title: 'Finishing up',
         actions: 'Double-check everything looks OK before confirming.',
       };
+    case MainRoutes.thank:
+      return {
+        route: MainRoutes.thank,
+      };
+
     default:
       return {
         route: MainRoutes.default,

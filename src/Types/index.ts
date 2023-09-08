@@ -32,7 +32,3 @@ export interface FinishAddonsItemsType {
   data: string;
   setTotalPrice: (callback: (price: number) => number) => void;
 }
-
-export interface FinishType {
-  setThank: (data: boolean) => void;
-}

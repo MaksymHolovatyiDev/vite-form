@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        mobile: {max: '1400px'},
+      },
       colors: {
         'Marine-Blue': 'hsl(213, 96%, 18%)',
         'Purplish-Blue': 'hsl(243, 100%, 62%)',
@@ -21,6 +24,7 @@ export default {
       },
       backgroundImage: {
         'bg-desktop': "url('./src/assets/images/bg-sidebar-desktop.svg')",
+        'bg-mobile': "url('./src/assets/images/bg-sidebar-mobile.svg')",
         'thank-you': "url('./src/assets/images/icon-thank-you.svg')",
         Arcade: "url('./src/assets/images/icon-arcade.svg')",
         Pro: "url('./src/assets/images/icon-pro.svg')",

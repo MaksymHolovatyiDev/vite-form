@@ -33,7 +33,7 @@
   src: url(../assets/fonts/Ubuntu-Regular.ttf);
 }
 
-body{
+body {
   font-family: 'Ubuntu-regular', sans-serif;
 }
 
@@ -70,19 +70,16 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
 .translate-center {
   transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 1400px) {
+  :root {
+    background-color: hsl(217, 100%, 97%);
+  }
+
+  .translate-center {
+    transform: translate(0);
+  }
 }

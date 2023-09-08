@@ -3,10 +3,9 @@ import {useData} from '@/Provider';
 import {MainRoutes} from '@/environment/variables';
 import {Link} from 'react-router-dom';
 import FinishAddonItem from '@components/FinishAddonItem/FinishAddonItem';
-import {FinishType} from '@/Types';
 import {cards} from '@/constants/constants';
 
-function Finish({setThank}: FinishType) {
+function Finish() {
   const {state, dispatch} = useData();
   const price = cards.find(el => el.text.split('bg-')[1] === state.plan.plan);
   const [totalPrice, setTotalPrice] = useState(
@@ -25,7 +24,7 @@ function Finish({setThank}: FinishType) {
   }, [totalPrice]);
 
   return (
-    <div className="flex flex-col justify-between grow">
+    <div className="flex flex-col justify-between grow mobile:mt-4">
       <div>
         <div className="bg-Magnolia rounded-md p-6">
           <div className="flex justify-between">
@@ -63,23 +62,22 @@ function Finish({setThank}: FinishType) {
           <p className="text-Cool-Gray">
             Total(per {state.plan?.billing ? 'year' : 'month'})
           </p>
-          <p className="card-title text-Purplish-Blue text-xl text-center">
+          <p className="card-title text-Purplish-Blue text-xl text-center mobile:text-lg">
             {!state.plan?.billing && '+'}${state.summary.price + billing}
           </p>
         </div>
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between mobile:fixed mobile:flex mobile:items-center mobile:w-full mobile:bg-white mobile:right-0 mobile:bottom-0 mobile:p-4">
         <Link
           to={MainRoutes.addons}
-          className="text-Cool-Gray transition border-none hover:text-Marine-Blue">
+          className="text-Cool-Gray transition border-none hover:text-Marine-Blue flex items-center">
           Go Back
         </Link>
-        <button
-          type="button"
-          onClick={() => setThank(true)}
-          className="bg-Purplish-Blue self-end border-none transition-opacity hover:opacity-70">
+        <Link
+          to={MainRoutes.thank}
+          className="bg-Purplish-Blue self-end  px-5 py-2 text-white border-none rounded-md transition-opacity hover:text-white hover:opacity-70 mobile:rounded">
           Confirm
-        </button>
+        </Link>
       </div>
     </div>
   );

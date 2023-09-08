@@ -22,7 +22,7 @@ function AddonsListItem({data, billing, value}: AddonsPickInterface) {
           <div
             className={
               checked
-                ? 'bg-Checkmark bg-no-repeat bg-cover bg-center w-3 h-2 mobile:w-4 mobile:h-3'
+                ? 'checkmark-bg bg-no-repeat bg-cover bg-center w-3 h-2 mobile:w-4 mobile:h-3'
                 : ''
             }
           />

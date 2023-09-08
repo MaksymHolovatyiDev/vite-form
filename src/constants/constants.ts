@@ -34,10 +34,10 @@ export const getData = {
 };
 
 export const sidePanelData = [
-  {text: 'Your Info', route: MainRoutes.Default},
-  {text: 'Select Plan', route: MainRoutes.Plan},
-  {text: 'Add-ons', route: MainRoutes.Addons},
-  {text: 'Summary', route: MainRoutes.Summary},
+  {text: 'Your Info', route: MainRoutes.Default, content:'before:content-["1"]'},
+  {text: 'Select Plan', route: MainRoutes.Plan, content:'before:content-["2"]'},
+  {text: 'Add-ons', route: MainRoutes.Addons, content:'before:content-["3"]'},
+  {text: 'Summary', route: MainRoutes.Summary,content:'before:content-["4"]'},
 ];
 
 export const addonsPick = [

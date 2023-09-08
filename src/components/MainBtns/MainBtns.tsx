@@ -9,7 +9,7 @@ function MainBtns({
 }: MainBtnsInterface) {
   return (
     <div
-      className={`flex items-end ${
+      className={`flex items-center ${
         end ? 'justify-end' : 'justify-between'
       } mobile:absolute mobile:flex mobile:items-center mobile:w-full mobile:bg-white mobile:right-0 mobile:bottom-0 mobile:p-4`}>
       {routeBackward && (

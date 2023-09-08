@@ -104,6 +104,34 @@
   border-color: hsl(243, 100%, 62%);
 }
 
+.sidebar-bg {
+  background-image: url('../assets/images/bg-sidebar-desktop.svg');
+}
+
+.thank-you-bg{
+  background-image: url('../assets/images/icon-thank-you.svg');
+}
+
+.bg-Arcade{
+  background-image: url('../assets/images/icon-arcade.svg');
+
+}
+
+.bg-Pro{
+  background-image: url('../assets/images/icon-pro.svg');
+
+}
+
+.bg-Advanced{
+  background-image: url('../assets/images/icon-advanced.svg');
+
+}
+
+.checkmark-bg{
+  background-image: url('../assets/images/icon-checkmark.svg');
+
+}
+
 @media screen and (max-width: 1400px) {
   .max-height {
     max-height: 100%;
@@ -146,5 +174,9 @@
 
     font-size: 1.7rem;
     line-height: 2.1rem;
+  }
+
+  .sidebar-bg {
+    background-image: url('../assets/images/bg-sidebar-mobile.svg');
   }
 }

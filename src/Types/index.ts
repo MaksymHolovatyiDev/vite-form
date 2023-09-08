@@ -1,10 +1,10 @@
-export interface SelectedCardItemType {
+export interface SelectedCardItemInterface {
   card: {text: string; price: {year: number; month: number}};
   selected: boolean;
   billing: boolean;
 }
 
-export interface addonsPickInterface {
+export interface AddonsPickInterface {
   data: {
     text: string;
     price: {
@@ -28,7 +28,28 @@ export interface InfoValues {
   tel: string;
 }
 
-export interface FinishAddonsItemsType {
+export interface FinishAddonsItemsInterface {
   data: string;
   setTotalPrice: (callback: (price: number) => number) => void;
+}
+
+export interface PersonalInfoLabelInterface {
+  name: string;
+  text: string;
+  required: string[];
+}
+
+export interface MainBtnsInterface {
+  isSubmitting?: any;
+  routeForward?: string;
+  routeBackward?: string;
+  end?: boolean;
+}
+
+export interface SidePanelLinkInterface {
+  data: {
+    text: string;
+    route: string;
+  };
+  idx: number;
 }

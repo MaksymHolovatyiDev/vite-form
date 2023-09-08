@@ -1,8 +1,10 @@
-import {useData} from '@/Provider';
-import {MainRoutes} from '@/environment/variables';
+import {useData} from '@/Providers/DataPrvider';
+import {MainRoutes} from '@/environment/MainRoutes';
 import {Field, Form, Formik} from 'formik';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import PersonalInfoLabel from '../PersonalInfoLable/PersonalInfoLabe';
+import MainBtns from '../MainBtns/MainBtns';
 
 function PersonalInfo() {
   const [required, setRequired] = useState<string[]>([]);
@@ -38,7 +40,7 @@ function PersonalInfo() {
 
         if (!error) {
           dispatch({type: 'info', payload: values});
-          navigate(MainRoutes.plan);
+          navigate(MainRoutes.Plan);
         }
 
         setSubmitting(false);
@@ -48,17 +50,11 @@ function PersonalInfo() {
           onSubmit={handleSubmit}
           className="flex flex-col justify-between mt-5 grow">
           <div className="flex flex-col gap-1">
-            <div className="flex justify-between items-center">
-              <label htmlFor="name" className="text-Marine-Blue">
-                Name
-              </label>
-              <p
-                className={
-                  required.includes('name') ? 'text-Strawberry-Red' : 'hidden'
-                }>
-                This field is required
-              </p>
-            </div>
+            <PersonalInfoLabel
+              name={'name'}
+              text={'Name'}
+              required={required}
+            />
             <Field
               type="text"
               name="name"
@@ -71,19 +67,11 @@ function PersonalInfo() {
                 required.includes('name') && 'border-Strawberry-Red'
               }`}
             />
-
-            <div className="flex justify-between items-center">
-              <label htmlFor="email" className="text-Marine-Blue">
-                Email Address
-              </label>
-              <p
-                className={
-                  required.includes('name') ? 'text-Strawberry-Red' : 'hidden'
-                }>
-                This field is required
-              </p>
-            </div>
-
+            <PersonalInfoLabel
+              name={'email'}
+              text={'Email Address'}
+              required={required}
+            />
             <Field
               type="email"
               name="email"
@@ -96,18 +84,11 @@ function PersonalInfo() {
                 required.includes('email') && 'border-Strawberry-Red'
               }`}
             />
-
-            <div className="flex justify-between items-center">
-              <label htmlFor="password" className="text-Marine-Blue">
-                Phone Number
-              </label>
-              <p
-                className={
-                  required.includes('name') ? 'text-Strawberry-Red' : 'hidden'
-                }>
-                This field is required
-              </p>
-            </div>
+            <PersonalInfoLabel
+              name={'tel'}
+              text={'Phone Number'}
+              required={required}
+            />
             <Field
               type="text"
               name="tel"
@@ -122,14 +103,7 @@ function PersonalInfo() {
               }`}
             />
           </div>
-          <div className="self-end mobile:fixed mobile:flex mobile:items-center mobile:justify-end mobile:w-full mobile:bg-white mobile:right-0 mobile:bottom-0 mobile:p-4">
-            <button
-              type="submit"
-              className="bg-Marine-Blue border-none transition-opacity hover:opacity-90 mobile:rounded"
-              disabled={isSubmitting}>
-              Next Step
-            </button>
-          </div>
+          <MainBtns isSubmitting={isSubmitting} end/>
         </Form>
       )}
     </Formik>

@@ -1,4 +1,4 @@
-import {MainRoutes} from '@/environment/variables';
+import {MainRoutes} from '@/environment/MainRoutes';
 
 export const cards = [
   {text: 'bg-Arcade', price: {year: 90, month: 9}},
@@ -6,39 +6,39 @@ export const cards = [
   {text: 'bg-Pro', price: {year: 150, month: 15}},
 ];
 
-export const getData = (route: string) => {
-  switch (route) {
-    case MainRoutes.plan:
-      return {
-        route: MainRoutes.plan,
-        title: 'Select your plan',
-        actions: 'You have the option of monthly or yearly billing.',
-      };
-    case MainRoutes.addons:
-      return {
-        route: MainRoutes.addons,
-        title: 'Pick add-ons',
-        actions: 'Add-ons help enhance your gaming experience.',
-      };
-    case MainRoutes.summary:
-      return {
-        route: MainRoutes.summary,
-        title: 'Finishing up',
-        actions: 'Double-check everything looks OK before confirming.',
-      };
-    case MainRoutes.thank:
-      return {
-        route: MainRoutes.thank,
-      };
+export const getData = {
+  [MainRoutes.Plan]: {
+    route: MainRoutes.Plan,
+    title: 'Select your plan',
+    actions: 'You have the option of monthly or yearly billing.',
+  },
+  [MainRoutes.Addons]: {
+    route: MainRoutes.Addons,
+    title: 'Pick add-ons',
+    actions: 'Add-ons help enhance your gaming experience.',
+  },
+  [MainRoutes.Summary]: {
+    route: MainRoutes.Summary,
+    title: 'Finishing up',
+    actions: 'Double-check everything looks OK before confirming.',
+  },
+  [MainRoutes.Thank]: {
+    route: MainRoutes.Summary,
+  },
 
-    default:
-      return {
-        route: MainRoutes.default,
-        title: 'Personal info',
-        actions: 'Please provide your name, email address, and phone number.',
-      };
-  }
+  [MainRoutes.Default]: {
+    route: MainRoutes.Default,
+    title: 'Personal info',
+    actions: 'Please provide your name, email address, and phone number.',
+  },
 };
+
+export const sidePanelData = [
+  {text: 'Your Info', route: MainRoutes.Default},
+  {text: 'Select Plan', route: MainRoutes.Plan},
+  {text: 'Add-ons', route: MainRoutes.Addons},
+  {text: 'Summary', route: MainRoutes.Summary},
+];
 
 export const addonsPick = [
   {

@@ -1,12 +1,14 @@
-import {useEffect, useState} from 'react';
-import {useData} from '@/Provider';
-import {MainRoutes} from '@/environment/variables';
-import {Link} from 'react-router-dom';
+import {useEffect, useState, useLayoutEffect} from 'react';
+import {useData} from '@/Providers/DataPrvider';
+import {MainRoutes} from '@/environment/MainRoutes';
+import {Link, useNavigate} from 'react-router-dom';
 import FinishAddonItem from '@components/FinishAddonItem/FinishAddonItem';
 import {cards} from '@/constants/constants';
+import MainBtns from '../MainBtns/MainBtns';
 
 function Finish() {
   const {state, dispatch} = useData();
+  const navigate = useNavigate();
   const price = cards.find(el => el.text.split('bg-')[1] === state.plan.plan);
   const [totalPrice, setTotalPrice] = useState(
     state.plan?.billing ? price!.price.year : price!.price.month,
@@ -18,6 +20,10 @@ function Finish() {
     (acc: string[], el) => (el[1] ? [...acc, el[0]] : acc),
     [],
   );
+
+  useLayoutEffect(() => {
+    if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
+  }, []);
 
   useEffect(() => {
     dispatch({type: 'setPrice', payload: totalPrice});
@@ -41,7 +47,7 @@ function Finish() {
             </p>
           </div>
           <Link
-            to={MainRoutes.plan}
+            to={MainRoutes.Plan}
             className="text-Cool-Gray underline transition hover:text-Purplish-Blue focus:text-Purplish-Blue">
             Change
           </Link>
@@ -67,18 +73,7 @@ function Finish() {
           </p>
         </div>
       </div>
-      <div className="flex justify-between mobile:fixed mobile:flex mobile:items-center mobile:w-full mobile:bg-white mobile:right-0 mobile:bottom-0 mobile:p-4">
-        <Link
-          to={MainRoutes.addons}
-          className="text-Cool-Gray transition border-none hover:text-Marine-Blue flex items-center">
-          Go Back
-        </Link>
-        <Link
-          to={MainRoutes.thank}
-          className="bg-Purplish-Blue self-end  px-5 py-2 text-white border-none rounded-md transition-opacity hover:text-white hover:opacity-70 mobile:rounded">
-          Confirm
-        </Link>
-      </div>
+      <MainBtns routeBackward={MainRoutes.Addons} routeForward={MainRoutes.Thank} />
     </div>
   );
 }

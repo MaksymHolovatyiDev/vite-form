@@ -1,20 +1,26 @@
+import {useLayoutEffect} from 'react';
 import {addonsPick} from '@/constants/constants';
 import {Form, Formik} from 'formik';
 import AddonsListItem from '../AddonsListItem/AddonsListItem';
-import {Link, useNavigate} from 'react-router-dom';
-import {useData} from '@/Provider';
-import {MainRoutes} from '@/environment/variables';
+import {useNavigate} from 'react-router-dom';
+import {useData} from '@/Providers/DataPrvider';
+import {MainRoutes} from '@/environment/MainRoutes';
+import MainBtns from '../MainBtns/MainBtns';
 
 function Addons() {
   const navigate = useNavigate();
   const {state, dispatch} = useData();
+
+  useLayoutEffect(() => {
+    if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
+  }, []);
 
   return (
     <Formik
       initialValues={state.addons}
       onSubmit={async (values, {setSubmitting}) => {
         dispatch({type: 'addons', payload: values});
-        navigate(MainRoutes.summary);
+        navigate(MainRoutes.Summary);
         setSubmitting(false);
       }}>
       {({values, isSubmitting}) => (
@@ -36,19 +42,11 @@ function Addons() {
               </li>
             ))}
           </ul>
-          <div className="flex justify-between mobile:fixed mobile:flex mobile:items-center mobile:w-full mobile:bg-white mobile:right-0 mobile:bottom-0 mobile:p-4">
-            <Link
-              to={MainRoutes.plan}
-              className="text-Cool-Gray transition border-none hover:text-Marine-Blue flex items-center">
-              Go Back
-            </Link>
-            <button
-              disabled={isSubmitting}
-              type="submit"
-              className="bg-Marine-Blue self-end border-none transition-opacity hover:opacity-90 mobile:rounded">
-              Next Step
-            </button>
-          </div>
+
+          <MainBtns
+            isSubmitting={isSubmitting}
+            routeBackward={MainRoutes.Plan}
+          />
         </Form>
       )}
     </Formik>

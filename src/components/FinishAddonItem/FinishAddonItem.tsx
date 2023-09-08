@@ -1,9 +1,9 @@
 import {useEffect} from 'react';
-import {useData} from '@/Provider';
+import {useData} from '@/Providers/DataPrvider';
 import {addonsPick} from '@/constants/constants';
-import {FinishAddonsItemsType} from '@/Types';
+import {FinishAddonsItemsInterface} from '@/Types';
 
-function FinishAddonItem({data, setTotalPrice}: FinishAddonsItemsType) {
+function FinishAddonItem({data, setTotalPrice}: FinishAddonsItemsInterface) {
   const {state} = useData();
   const price = addonsPick.find(el => el.text === data)?.price;
 
@@ -17,13 +17,12 @@ function FinishAddonItem({data, setTotalPrice}: FinishAddonsItemsType) {
   }, []);
 
   return (
-      <div className="flex justify-between">
-        <p className="text-Cool-Gray">{data}</p>
-        <p className="text-Marine-Blue">
-          +${state.plan?.billing ? price?.year + '/yr' : price?.month + '/mo'}
-        </p>
-      </div>
- 
+    <div className="flex justify-between">
+      <p className="text-Cool-Gray">{data}</p>
+      <p className="text-Marine-Blue">
+        +${state.plan?.billing ? price?.year + '/yr' : price?.month + '/mo'}
+      </p>
+    </div>
   );
 }
 

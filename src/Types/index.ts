@@ -39,7 +39,7 @@ export interface PersonalInfoLabelInterface {
   required: string[];
 }
 
-export interface MainBtnsInterface {
+export interface MainButtonsInterface {
   isSubmitting?: any;
   routeForward?: string;
   routeBackward?: string;

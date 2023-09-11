@@ -1,12 +1,12 @@
-import {MainBtnsInterface} from '@/Types';
+import {MainButtonsInterface} from '@/Types';
 import {Link} from 'react-router-dom';
 
-function MainBtns({
+function MainButtons({
   isSubmitting,
   routeForward,
   routeBackward,
   end = false,
-}: MainBtnsInterface) {
+}: MainButtonsInterface) {
   return (
     <div
       className={`flex items-center ${
@@ -37,4 +37,4 @@ function MainBtns({
   );
 }
 
-export default MainBtns;
+export default MainButtons;

@@ -1,23 +1,17 @@
-import {useEffect, useLayoutEffect} from 'react';
 import {addonsPick} from '@/constants/constants';
 import {Form, Formik} from 'formik';
 import AddonsListItem from '../AddonsListItem/AddonsListItem';
 import {useNavigate} from 'react-router-dom';
 import {useData} from '@/Providers/DataProvider';
 import {MainRoutes} from '@/environment/MainRoutes';
-import MainBtns from '../MainBtns/MainBtns';
+import MainButtons from '@components/MainButtons/MainButtons';
+import {useDefaultRedirect} from '@/Hooks';
 
 function Addons() {
   const navigate = useNavigate();
   const {state, dispatch} = useData();
 
-  useLayoutEffect(() => {
-    if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
-  }, []);
-
-  useEffect(() => {
-    if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
-  }, []);
+  useDefaultRedirect();
 
   return (
     <Formik
@@ -47,7 +41,7 @@ function Addons() {
             ))}
           </ul>
 
-          <MainBtns
+          <MainButtons
             isSubmitting={isSubmitting}
             routeBackward={MainRoutes.Plan}
           />

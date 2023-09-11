@@ -1,4 +1,3 @@
-import {useEffect, useLayoutEffect} from 'react';
 import {cards} from '@/constants/constants';
 import {Form, Formik} from 'formik';
 import PlanCardItem from '@components/PlanCardItem/PlanCardItem';
@@ -6,19 +5,14 @@ import {useNavigate} from 'react-router-dom';
 import {useData} from '@/Providers/DataProvider';
 import {MainRoutes} from '@/environment/MainRoutes';
 import SelectPlanCheckbox from '../SelectPlanCheckbox/SelectPlanCheckbox';
-import MainBtns from '../MainBtns/MainBtns';
+import MainButtons from '@components/MainButtons/MainButtons';
+import {useDefaultRedirect} from '@/Hooks';
 
 function SelectPlan() {
   const navigate = useNavigate();
   const {state, dispatch} = useData();
 
-  useLayoutEffect(() => {
-    if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
-  }, []);
-
-  useEffect(() => {
-    if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
-  }, []);
+  useDefaultRedirect();
 
   return (
     <Formik
@@ -54,7 +48,7 @@ function SelectPlan() {
             </ul>
             <SelectPlanCheckbox billing={values.billing} />
           </div>
-          <MainBtns
+          <MainButtons
             isSubmitting={isSubmitting}
             routeBackward={MainRoutes.Default}
           />

@@ -1,14 +1,14 @@
-import {useEffect, useState, useLayoutEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useData} from '@/Providers/DataProvider';
 import {MainRoutes} from '@/environment/MainRoutes';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import FinishAddonItem from '@components/FinishAddonItem/FinishAddonItem';
 import {cards} from '@/constants/constants';
-import MainBtns from '../MainBtns/MainBtns';
+import MainButtons from '@components/MainButtons/MainButtons';
+import {useDefaultRedirect} from '@/Hooks';
 
 function Finish() {
   const {state, dispatch} = useData();
-  const navigate = useNavigate();
   const price = cards.find(el => el.text.split('bg-')[1] === state.plan.plan);
   const [totalPrice, setTotalPrice] = useState(
     state.plan?.billing ? price!.price.year : price!.price.month,
@@ -21,13 +21,7 @@ function Finish() {
     [],
   );
 
-  useLayoutEffect(() => {
-    if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
-  }, []);
-
-  useEffect(() => {
-    if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
-  }, []);
+  useDefaultRedirect();
 
   useEffect(() => {
     dispatch({type: 'setPrice', payload: totalPrice});
@@ -77,7 +71,7 @@ function Finish() {
           </p>
         </div>
       </div>
-      <MainBtns
+      <MainButtons
         routeBackward={MainRoutes.Addons}
         routeForward={MainRoutes.Thank}
       />

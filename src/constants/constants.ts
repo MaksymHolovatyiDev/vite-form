@@ -1,5 +1,7 @@
 import {MainRoutes} from '@/environment/MainRoutes';
 
+export const infoLength = 3;
+
 export const cards = [
   {text: 'bg-Arcade', price: {year: 90, month: 9}},
   {text: 'bg-Advanced', price: {year: 120, month: 12}},

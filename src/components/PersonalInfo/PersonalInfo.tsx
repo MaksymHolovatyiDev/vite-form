@@ -4,7 +4,7 @@ import {Field, Form, Formik} from 'formik';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import PersonalInfoLabel from '../PersonalInfoLable/PersonalInfoLabe';
-import MainBtns from '../MainBtns/MainBtns';
+import MainButtons from '@components/MainButtons/MainButtons';
 
 function PersonalInfo() {
   const [required, setRequired] = useState<string[]>([]);
@@ -103,7 +103,7 @@ function PersonalInfo() {
               }`}
             />
           </div>
-          <MainBtns isSubmitting={isSubmitting} end />
+          <MainButtons isSubmitting={isSubmitting} end />
         </Form>
       )}
     </Formik>

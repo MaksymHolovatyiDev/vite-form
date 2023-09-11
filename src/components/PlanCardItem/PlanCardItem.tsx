@@ -1,7 +1,7 @@
-import {SelectedCardItemInterface} from '@/Types';
+import {SelectedCardItem} from '@/Types';
 import {Field} from 'formik';
 
-function PlanCardItem({card, selected, billing}: SelectedCardItemInterface) {
+function PlanCardItem({card, selected, billing}: SelectedCardItem) {
   return (
     <label>
       <Field

@@ -1,6 +1,6 @@
-import {PersonalInfoLabelInterface} from '@/Types';
+import {PersonalInfoWrapper} from '@/Types';
 
-function PersonalInfoLabel({name, text, required}: PersonalInfoLabelInterface) {
+function PersonalInfoLabel({name, text, required}: PersonalInfoWrapper) {
   return (
     <div className="flex justify-between items-center">
       <label htmlFor={name} className="text-Marine-Blue">

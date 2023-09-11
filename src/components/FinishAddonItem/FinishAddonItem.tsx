@@ -1,9 +1,9 @@
 import {useEffect} from 'react';
 import {useData} from '@/Providers/DataProvider';
 import {addonsPick} from '@/constants/constants';
-import {FinishAddonsItemsInterface} from '@/Types';
+import {FinishAddonsItems} from '@/Types';
 
-function FinishAddonItem({data, setTotalPrice}: FinishAddonsItemsInterface) {
+function FinishAddonItem({data, setTotalPrice}: FinishAddonsItems) {
   const {state} = useData();
   const price = addonsPick.find(el => el.text === data)?.price;
 

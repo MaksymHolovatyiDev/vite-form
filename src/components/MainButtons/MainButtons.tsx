@@ -1,4 +1,4 @@
-import {MainButtonsInterface} from '@/Types';
+import {SelectButton} from '@/Types';
 import {Link} from 'react-router-dom';
 
 function MainButtons({
@@ -6,7 +6,7 @@ function MainButtons({
   routeForward,
   routeBackward,
   end = false,
-}: MainButtonsInterface) {
+}: SelectButton) {
   return (
     <div
       className={`flex items-center ${

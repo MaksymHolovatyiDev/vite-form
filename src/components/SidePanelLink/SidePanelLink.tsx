@@ -1,9 +1,9 @@
-import {SidePanelLinkInterface} from '@/Types';
+import {SidePanelNavigation} from '@/Types';
 import {getData} from '@/constants/constants';
 import {MainRoutes} from '@/environment/MainRoutes';
 import {Link, useLocation} from 'react-router-dom';
 
-function SidePanelLink({data, idx}: SidePanelLinkInterface) {
+function SidePanelLink({data, idx}: SidePanelNavigation) {
   const location = useLocation();
   const titleData = getData[location.pathname as keyof typeof getData]
     ? getData[location.pathname as keyof typeof getData]

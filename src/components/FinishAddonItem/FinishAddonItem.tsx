@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {useData} from '@/Providers/DataPrvider';
+import {useData} from '@/Providers/DataProvider';
 import {addonsPick} from '@/constants/constants';
 import {FinishAddonsItemsInterface} from '@/Types';
 

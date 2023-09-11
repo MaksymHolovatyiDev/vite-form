@@ -1,4 +1,4 @@
-import {useData} from '@/Providers/DataPrvider';
+import {useData} from '@/Providers/DataProvider';
 import {MainRoutes} from '@/environment/MainRoutes';
 import {Field, Form, Formik} from 'formik';
 import {useState} from 'react';
@@ -103,7 +103,7 @@ function PersonalInfo() {
               }`}
             />
           </div>
-          <MainBtns isSubmitting={isSubmitting} end/>
+          <MainBtns isSubmitting={isSubmitting} end />
         </Form>
       )}
     </Formik>

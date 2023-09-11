@@ -1,7 +1,7 @@
 import '@/css/App.css';
 import {Routes, Route} from 'react-router-dom';
 import {MainRoutes} from '@/environment/MainRoutes';
-import DataProvider from '@/Providers/DataPrvider';
+import DataProvider from '@/Providers/DataProvider';
 import MainPanelProvider from '@/Providers/MainPanelProvider';
 import PersonalInfo from './PersonalInfo/PersonalInfo';
 import SelectPlan from './SelectPlan/SelectPlan';

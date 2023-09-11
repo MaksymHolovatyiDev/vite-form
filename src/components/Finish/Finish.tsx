@@ -1,5 +1,5 @@
 import {useEffect, useState, useLayoutEffect} from 'react';
-import {useData} from '@/Providers/DataPrvider';
+import {useData} from '@/Providers/DataProvider';
 import {MainRoutes} from '@/environment/MainRoutes';
 import {Link, useNavigate} from 'react-router-dom';
 import FinishAddonItem from '@components/FinishAddonItem/FinishAddonItem';
@@ -22,6 +22,10 @@ function Finish() {
   );
 
   useLayoutEffect(() => {
+    if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
+  }, []);
+
+  useEffect(() => {
     if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
   }, []);
 
@@ -73,7 +77,10 @@ function Finish() {
           </p>
         </div>
       </div>
-      <MainBtns routeBackward={MainRoutes.Addons} routeForward={MainRoutes.Thank} />
+      <MainBtns
+        routeBackward={MainRoutes.Addons}
+        routeForward={MainRoutes.Thank}
+      />
     </div>
   );
 }

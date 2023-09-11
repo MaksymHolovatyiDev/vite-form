@@ -108,28 +108,24 @@
   background-image: url('../assets/images/bg-sidebar-desktop.svg');
 }
 
-.thank-you-bg{
+.thank-you-bg {
   background-image: url('../assets/images/icon-thank-you.svg');
 }
 
-.bg-Arcade{
+.bg-Arcade {
   background-image: url('../assets/images/icon-arcade.svg');
-
 }
 
-.bg-Pro{
+.bg-Pro {
   background-image: url('../assets/images/icon-pro.svg');
-
 }
 
-.bg-Advanced{
+.bg-Advanced {
   background-image: url('../assets/images/icon-advanced.svg');
-
 }
 
-.checkmark-bg{
+.checkmark-bg {
   background-image: url('../assets/images/icon-checkmark.svg');
-
 }
 
 @media screen and (max-width: 1400px) {
@@ -142,7 +138,7 @@
   }
 
   .base-min-h {
-    min-height: 730px;
+    min-height: 800px;
   }
 
   .link::before {

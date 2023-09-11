@@ -1,9 +1,9 @@
-import {useLayoutEffect} from 'react';
+import {useEffect, useLayoutEffect} from 'react';
 import {cards} from '@/constants/constants';
 import {Form, Formik} from 'formik';
 import PlanCardItem from '@components/PlanCardItem/PlanCardItem';
 import {useNavigate} from 'react-router-dom';
-import {useData} from '@/Providers/DataPrvider';
+import {useData} from '@/Providers/DataProvider';
 import {MainRoutes} from '@/environment/MainRoutes';
 import SelectPlanCheckbox from '../SelectPlanCheckbox/SelectPlanCheckbox';
 import MainBtns from '../MainBtns/MainBtns';
@@ -13,6 +13,10 @@ function SelectPlan() {
   const {state, dispatch} = useData();
 
   useLayoutEffect(() => {
+    if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
+  }, []);
+
+  useEffect(() => {
     if (Object.keys(state.info).length !== 3) navigate(MainRoutes.Default);
   }, []);
 
@@ -40,11 +44,11 @@ function SelectPlan() {
             <ul className="flex justify-between mobile:flex-col mobile:gap-4">
               {cards.map(el => (
                 <li key={el.text}>
-                    <PlanCardItem
-                      card={el}
-                      selected={values.plan === el.text.split('bg-')[1]}
-                      billing={values.billing}
-                    />
+                  <PlanCardItem
+                    card={el}
+                    selected={values.plan === el.text.split('bg-')[1]}
+                    billing={values.billing}
+                  />
                 </li>
               ))}
             </ul>
